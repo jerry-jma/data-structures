@@ -28,7 +28,6 @@ class Queue {
 var instance = new Queue();
 
 
-// Work within the src/es6/ folder
 // Capitalize your function name to indicate to others that it is intended to be run with the keyword new
 // Use the keyword new when instantiating your class
 // Use the keyword this in your constructor
