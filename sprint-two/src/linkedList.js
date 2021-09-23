@@ -13,6 +13,9 @@ var LinkedList = function() {
       // point the tail to the new node
     //
     */
+
+
+    // ----------------Time complexity: constant time O(1);-------------------------
     var newNode = Node(value);
     if (list.head === null) {
       list.head = newNode;
@@ -30,13 +33,15 @@ var LinkedList = function() {
     point the head to the current next property of the current head
     return that var
     */
+
+    // ----------------Time complexity: constant time O(1);-------------------------
+
     if (list.head === null) {
       return undefined;
     }
     var headValue = list.head.value;
     list.head = list.head.next;
     return headValue;
-
   };
 
   list.contains = function(target) {
@@ -51,6 +56,7 @@ var LinkedList = function() {
     if not found, just return false;
     */
 
+    // ----------------Time complexity: linear time O(n);-------------------------
     var node = list.head;
     while (node !== null) {
       if (node.value === target) {
