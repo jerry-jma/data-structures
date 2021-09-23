@@ -5,19 +5,27 @@ var Queue = function() {
   var storage = {};
 
   // Implement the methods below
-  // use a counter to count, each time a new value is added,
   var count = 0;
+  var currentFirstIndex = 1;
 
   someInstance.enqueue = function(value) {
-    storage[count] = value;
     count++;
+    storage[count] = value;
   };
 
   someInstance.dequeue = function() {
+    // we should store the value being dequeue next
+    // each time we dequeue a value,
+    // we update the currentFirstIndex;
+    // return the value being dequeued next
+    var temp = storage[currentFirstIndex];
+    delete storage[currentFirstIndex];
+    currentFirstIndex++;
+    return temp;
   };
 
   someInstance.size = function() {
-    return count;
+    return Object.keys(storage).length;
   };
 
   return someInstance;
