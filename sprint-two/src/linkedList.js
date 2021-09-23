@@ -40,7 +40,25 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    /*
+    iterate over the linked list from the head.next
+    keep going until we find the target value, or we reach the tail
+    we create new var node, assign to the head
+    use a while loop to, while (node !== null)
+      if node.value equal to target
+        return true
+      otherwise, node = node.next
+    if not found, just return false;
+    */
 
+    var node = list.head;
+    while (node !== null) {
+      if (node.value === target) {
+        return true;
+      }
+      node = node.next;
+    }
+    return false;
   };
 
   return list;
