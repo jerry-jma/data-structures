@@ -18,13 +18,24 @@ var LinkedList = function() {
       list.head = newNode;
     } else {
       list.tail.next = newNode;
-
     }
     list.tail = newNode;
-
   };
 
   list.removeHead = function() {
+    /*
+    if the head is null
+     // return  undefined
+    make a new var for the head value, assign to list.head.value
+    point the head to the current next property of the current head
+    return that var
+    */
+    if (list.head === null) {
+      return undefined;
+    }
+    var headValue = list.head.value;
+    list.head = list.head.next;
+    return headValue;
 
   };
 
