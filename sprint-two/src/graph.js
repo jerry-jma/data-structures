@@ -27,7 +27,7 @@ Graph.prototype.removeNode = function(node) {
     if (this.nodes[i] === node) {
       this.nodes.splice(i, 1);
       for (var j = 0; j < this.edges.length; j++) {
-        if (this.edges[j].from === node || this.edges[j].to === node) {
+        if (this.edges[j].node1 === node || this.edges[j].node2 === node) {
           this.edges.splice(j, 1);
         }
       }
@@ -39,7 +39,9 @@ Graph.prototype.removeNode = function(node) {
 Graph.prototype.hasEdge = function(fromNode, toNode) {
   // iterating through the edges
   for (var i = 0; i < this.edges.length; i++) {
-    if (this.edges[i].from === fromNode && this.edges[i].to === toNode) {
+    var node1 = this.edges[i].node1;
+    var node2 = this.edges[i].node2;
+    if ((node1 === fromNode && node2 === toNode) || (node2 === fromNode && node1 === toNode)) {
       return true;
     }
   }
@@ -48,14 +50,16 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
-  var edge = {from: fromNode, to: toNode};
+  var edge = {node1: fromNode, node2: toNode};
   this.edges.push(edge);
 };
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
   for (var i = 0; i < this.edges.length; i++) {
-    if (this.edges[i].from === fromNode && this.edges[i].to === toNode) {
+    var node1 = this.edges[i].node1;
+    var node2 = this.edges[i].node2;
+    if ((node1 === fromNode && node2 === toNode) || (node2 === fromNode && node1 === toNode)) {
       this.edges.splice(i, 1);
     }
   }

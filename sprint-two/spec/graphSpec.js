@@ -17,7 +17,6 @@ describe('graph', function() {
 
   it('should store values as nodes that were inserted', function() {
     graph.addNode(1);
-    debugger;
     expect(graph.contains(1)).to.equal(true);
   });
 
@@ -38,6 +37,7 @@ describe('graph', function() {
   });
 
   it('should remove edges between nodes', function() {
+    debugger;
     graph.addNode(4);
     graph.addNode(5);
     graph.addEdge(5, 4);
