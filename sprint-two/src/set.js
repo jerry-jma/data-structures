@@ -10,7 +10,7 @@ setPrototype.add = function(item) {
   /*  if item is not in storage already
    *    push to storage array
    */
-  if (!this._storage.contains(item)) {
+  if (!this.contains(item)) {
     this._storage.push(item);
   }
 };
@@ -32,6 +32,16 @@ setPrototype.contains = function(item) {
 };
 
 setPrototype.remove = function(item) {
+  /*  for each item in storage
+  *     if storage item === item
+  *       splice it
+  */
+
+  for (var i = 0; i < this._storage.length; i++) {
+    if (this._storage[i] === item) {
+      this._storage.splice(i, 1);
+    }
+  }
 };
 
 /*
