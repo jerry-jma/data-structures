@@ -23,6 +23,16 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  /*
+    base case -- if this.value is equal target
+      // return true;
+    recursive case -- otherwise
+      if this.children.length > 0
+        loop over this.children
+          // return this.children@i.contains(target)
+          otherwise,
+      return false
+  */
 };
 
 
