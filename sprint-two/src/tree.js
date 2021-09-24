@@ -18,6 +18,8 @@ treeMethods.addChild = function(value) {
   make a new node var that using Tree Constructor
   use this.push the new node
   */
+  // ----------------Time complexity: constant time O(1);-------------------------
+
   var node = Tree(value);
   this.children.push(node);
 };
@@ -36,6 +38,8 @@ treeMethods.contains = function(target) {
 
   return found
 */
+  // ----------------Time complexity: linear time O(n);-------------------------
+
   var found = false;
 
   if (this.value === target) {
@@ -52,7 +56,6 @@ treeMethods.contains = function(target) {
   return found;
 
 };
-
 
 
 /*
