@@ -23,10 +23,21 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+  for (var i = 0; i < this.nodes.length; i++) {
+    if (this.nodes[i] === node) {
+      this.nodes.splice(i, 1);
+      for (var j = 0; j < this.edges.length; j++) {
+        if (this.edges.from === node || this.edges.to === node) {
+          this.edges.splice(j, 1);
+        }
+      }
+    }
+  }
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  // iterating through the edges
 };
 
 // Connects two nodes in a graph by adding an edge between them.
