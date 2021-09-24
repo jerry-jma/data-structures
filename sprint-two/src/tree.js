@@ -24,15 +24,33 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
   /*
-    base case -- if this.value is equal target
-      // return true;
-    recursive case -- otherwise
-      if this.children.length > 0
-        loop over this.children
-          // return this.children@i.contains(target)
-          otherwise,
-      return false
-  */
+  create new variable called found, set it to false
+
+  if tree.value === target
+    return true
+
+  if tree.children.length > 0
+    for each child
+      if child.contains(value)
+        set found to true
+
+  return found
+*/
+  var found = false;
+
+  if (this.value === target) {
+    return true;
+  }
+  if (this.children.length > 0) {
+    this.children.forEach(function(value) {
+      if (value.contains(target)) {
+        found = true;
+      }
+    });
+  }
+
+  return found;
+
 };
 
 
@@ -40,3 +58,5 @@ treeMethods.contains = function(target) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+
