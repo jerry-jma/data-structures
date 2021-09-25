@@ -36,6 +36,10 @@ describe('linkedList', function() {
     expect(linkedList.removeHead()).to.equal(4);
   });
 
+  it('[NEW TEST] should return undefined when removeHead is called on an empty linkedList', function() {
+    expect(linkedList.removeHead()).to.equal(undefined);
+  });
+
   it('should contain a value that was added', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
