@@ -38,7 +38,6 @@ describe('binarySearchTree', function() {
     expect(array).to.eql([5, 2, 3, 7]);
   });
 
-
   it('[NEW TEST] should return null for the left and right properties if no values have been inserted', function() {
     expect(binarySearchTree.left).to.equal(null);
     expect(binarySearchTree.right).to.equal(null);

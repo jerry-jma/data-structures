@@ -41,4 +41,11 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('[NEW TEST] should correctly store duplicate value', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(5);
+    expect(tree.contains(5)).to.equal(true);
+    expect(tree.children[0].contains(5)).to.equal(true);
+  });
+
 });
