@@ -7,11 +7,39 @@ var BinarySearchTree = function(value) {
 };
 
 BinarySearchTree.prototype.insert = function(value) {
-
+  var tree = BinarySearchTree(value);
+  if (value < this.value) {
+    if (this.left === null) {
+      this.left = tree;
+    } else {
+      this.left.insert(value);
+    }
+  } else if (value > this.value) {
+    if (this.right === null) {
+      this.right = tree;
+    } else {
+      this.right.insert(value);
+    }
+  }
 };
 
 BinarySearchTree.prototype.contains = function(value) {
-
+  if (value === this.value) {
+    return true;
+  }
+  if (value < this.value) {
+    if (this.left === null) {
+      return false;
+    }
+    return this.left.contains(value);
+  }
+  if (value > this.value) {
+    if (this.right === null) {
+      return false;
+    }
+    return this.right.contains(value);
+  }
+  return false;
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
