@@ -8,45 +8,50 @@ HashTable.prototype.insert = function(k, v) {
 
   var tupleArray = [k, v];
   if (this._storage.get(index) === undefined) {
-    var newBucket = [];
-    newBucket.push(tupleArray);
-  } else {
-    var bucket = this._storage.get(index); // should give us an array
-    // add our tuple to the bucket
-    // this._storage.set(index, bucket)
+    var bucket = [];
     bucket.push(tupleArray);
-    this._storage.set(index, bucket);
+  } else {
+    var bucket = this._storage.get(index);
+    var overwrite = false;
+    for (var i = 0; i < bucket.length; i++) {
+      var tuple = bucket[i];
+      if (tuple[0] === k) {
+        tuple[1] = v;
+        overwrite = true;
+      }
+    }
+    if (!overwrite) {
+      bucket.push(tupleArray);
+    }
   }
-  // insert(fox, quick)
-  // var index = gethash#('fox', limit)
-  // make new tuple [fox, quick]
-  // if storage[index] is not an array
-  // set storage[index] = []
-  // push type to storage[index], which is a bucket array
-
-  // cat --> index 1 --> array[1] = feisty
-  // dog --> index 5 -- > array[5] = happy
-  // fox --> index 1 -->
-  // [__, [ [cat, feisty], [fox, quick] ], __, ___, ___, happy, ___, ___]
-  // [__, [ ] , [[fox, quick]] ,  [[], [], []] , ___ , ___]
-
-  /*
-  [
-    STORAGE
-
-    [ BUCKET [key, value], [key, value], [key, value]]
-
-    [ BUCKET [key, value], [key, value], [key, value]]
-
-    [ BUCKET [key, value], [key, value], [key, value]]
-
-  ]
-  */
+  this._storage.set(index, bucket);
 
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  /*
+  set new var bucket to this._storage.get(index);
+  if bucket is undefined
+    return undfined
+  iterate over the bucket –– for each tuple
+    if check the tuple0 === k
+      return tuple1
+
+  */
+  // return undefined;
+  var bucket = this._storage.get(index);
+  if (bucket === undefined) {
+    return undefined;
+  }
+  for (var i = 0; i < bucket.length; i++) {
+    // make a variable that
+    var tuple = bucket[i];
+    if (tuple[0] === k) {
+      return tuple[1];
+    }
+  }
+  return undefined;
 };
 
 HashTable.prototype.remove = function(k) {
