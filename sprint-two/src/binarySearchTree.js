@@ -50,6 +50,8 @@ BinarySearchTree.prototype.depthFirstLog = function(callback) {
   if (this.right !== null) {
     this.right.depthFirstLog(callback);
   }
+
+
 };
 
 /*
